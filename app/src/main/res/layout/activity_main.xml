@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- 预览显示框 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/colorPreviewCard"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <View
+            android:id="@+id/colorPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/hexCodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="@string/hexTextView"
+
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colorPreviewCard" />
+
+    <!-- red -->
+    <TextView
+        android:id="@+id/redLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/sliderTextView_Red"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hexCodeTextView" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/redSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        android:valueFrom="0"
+        android:valueTo="255"
+        android:value="0"
+        android:stepSize="1"
+
+        app:trackHeight="28dp"
+        app:tickRadiusActive="2.5dp"
+        app:tickRadiusInactive="2dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/redLable" />
+
+    <TextView
+        android:id="@+id/redValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sliderValueTextView"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/redLable"
+        app:layout_constraintTop_toTopOf="@+id/redLable"
+        app:layout_constraintLeft_toRightOf="@id/redLable" />
+
+    <!-- green -->
+    <TextView
+        android:id="@+id/greenLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sliderTextView_Green"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/redSeekBar"/>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/greenSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        android:valueFrom="0"
+        android:valueTo="255"
+        android:value="0"
+        android:stepSize="1"
+
+        app:trackHeight="28dp"
+        app:tickRadiusActive="2.5dp"
+        app:tickRadiusInactive="2dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greenLable" />
+
+    <TextView
+        android:id="@+id/greenValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sliderValueTextView"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/greenLable"
+        app:layout_constraintTop_toTopOf="@+id/greenLable"
+        app:layout_constraintLeft_toRightOf="@id/greenLable" />
+
+    <!-- blue -->
+    <TextView
+        android:id="@+id/blueLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sliderTextView_Blue"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greenSeekBar" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/blueSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        android:valueFrom="0"
+        android:valueTo="255"
+        android:value="0"
+        android:stepSize="1"
+
+        app:trackHeight="28dp"
+        app:tickRadiusActive="2.5dp"
+        app:tickRadiusInactive="2dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blueLable" />
+
+    <TextView
+        android:id="@+id/blueValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sliderValueTextView"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/blueLable"
+        app:layout_constraintTop_toTopOf="@+id/blueLable"
+        app:layout_constraintLeft_toRightOf="@id/blueLable" />
+
+    <!-- 透明度 -->
+    <TextView
+        android:id="@+id/alphaLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sliderTextView_Alpha"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blueSeekBar" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/alphaSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        android:valueFrom="0"
+        android:valueTo="255"
+        android:value="255"
+        android:stepSize="1"
+
+        app:trackHeight="28dp"
+        app:tickRadiusActive="2.5dp"
+        app:tickRadiusInactive="2dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alphaLable" />
+
+    <TextView
+        android:id="@+id/alphaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sliderValueTextView"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/alphaLable"
+        app:layout_constraintTop_toTopOf="@+id/alphaLable"
+        app:layout_constraintLeft_toRightOf="@id/alphaLable" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alphaSeekBar">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/copyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="@string/button_Copy"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/restButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_Rest"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

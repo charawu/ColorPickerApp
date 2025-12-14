@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ColorPickerApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- 如果上面报错，尝试用这个：Theme.Material3.Light.DarkActionBar -->
+
+        <!-- 基础颜色定义 -->
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+    </style>
+
+    <style name="Theme.App" parent="Base.Theme.ColorPickerApp">
+        <!-- 如果需要，可以在这里添加特定于应用主题的覆盖 -->
+    </style>
+</resources>

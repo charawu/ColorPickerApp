@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ColorPickerApp</string>
+    <string name="hexTextView">#00000000</string>
+
+    <!-- sliderTextView -->
+    <string name="sliderTextView_Red">红:</string>
+    <string name="sliderTextView_Blue">蓝:</string>
+    <string name="sliderTextView_Green">绿:</string>
+    <string name="sliderTextView_Alpha">透明度:</string>
+
+    <!-- sliderValueTextView -->
+    <string name="sliderValueTextView">0</string>
+
+    <!-- button -->
+    <string name="button_Copy">复制</string>
+    <string name="button_Rest">重置</string>
+</resources>
