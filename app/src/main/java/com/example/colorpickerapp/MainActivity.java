@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,8 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.slider.Slider;
 
 public class MainActivity extends AppCompatActivity {
@@ -160,6 +162,19 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {  //检查兼容新
+            WindowInsetsControllerCompat windowInsetsController =
+                    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+            // 判断是否为深色模式
+            boolean isDarkTheme = (getResources().getConfiguration().uiMode &
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK)
+                    == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+
+            // 设置状态栏图标颜色
+            windowInsetsController.setAppearanceLightStatusBars(!isDarkTheme);
+        }
 
         //初始化视图
         initView();
