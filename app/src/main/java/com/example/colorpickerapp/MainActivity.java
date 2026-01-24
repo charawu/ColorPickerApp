@@ -3,9 +3,11 @@ package com.example.colorpickerapp;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     //声明按钮
     private Button copyButton;
     private Button restButton;
+    private Button flashButton;
 
     //声明颜色值
     private int red = 0,green = 0,blue = 0;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
          //button
         copyButton = findViewById(R.id.copyButton);
         restButton = findViewById(R.id.restButton);
+        flashButton = findViewById(R.id.flashButton);
 
          //设置初始数值
         redValueText.setText("0");
@@ -75,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         redSlider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float v, boolean b) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_CLICK);
                 red = (int) v;
                 redValueText.setText(String.valueOf((int) v));
                 updateColor();
@@ -85,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         greenSlider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float v, boolean b) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_CLICK);
                 green = (int) v;
                 greenValueText.setText(String.valueOf((int) v));
                 updateColor();
@@ -95,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         blueSlider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float v, boolean b) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_CLICK);
                 blue = (int) v;
                 blueValueText.setText(String.valueOf((int) v));
                 updateColor();
@@ -105,25 +115,43 @@ public class MainActivity extends AppCompatActivity {
         alphaSlider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float v, boolean b) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_CLICK);
                 alpha = (int) v;
                 alphaValueText.setText(String.valueOf((int) v));
                 updateColor();
             }
         });
 
+        //copy监听
         copyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_HEAVY_CLICK);
                 copyButton();
             }
         });
 
+        //reset监听
         restButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_HEAVY_CLICK);
                 resetButton();
                 initView();
                 updateColor();
+            }
+        });
+
+        //flash监听
+        flashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VibrationHelper.INSTANCE.vibrateWithPredefinedEffect(MainActivity.this,
+                        VibrationEffect.EFFECT_HEAVY_CLICK);
+                flashButton();
             }
         });
     }
@@ -156,6 +184,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("fuckClip",String.valueOf(clip));
         clipboard.setPrimaryClip(clip);
         Toast.makeText(MainActivity.this,"已复制",Toast.LENGTH_SHORT).show();
+    }
+
+    protected void flashButton(){
+        Intent intent = new Intent(MainActivity.this,FlashControl.class);
+        intent.putExtra("auto_turn_on",true);
+        startActivity(intent);
     }
 
     @Override

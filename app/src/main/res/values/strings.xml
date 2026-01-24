@@ -14,4 +14,6 @@
     <!-- button -->
     <string name="button_Copy">复制</string>
     <string name="button_Rest">重置</string>
+    <string name="buttonFlash_on">on</string>
+    <string name="buttonFlash_off">off</string>
 </resources>

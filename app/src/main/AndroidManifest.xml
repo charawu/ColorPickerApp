@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.example.colorpickerapp">
+    <!-- 声明震动权限 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 声明相机权限,用于实现亮度调节 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApplication"
@@ -12,6 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColorPickerApp">
+        <activity
+            android:name=".FlashControl"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
