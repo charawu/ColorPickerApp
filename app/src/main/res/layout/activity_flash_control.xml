@@ -19,7 +19,8 @@
             android:id="@+id/flashButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center" />
+            android:layout_gravity="top|center"
+            android:text="@string/buttonFlash_off"/>
 
         <TextView
             android:id="@+id/brightnessTextView"
