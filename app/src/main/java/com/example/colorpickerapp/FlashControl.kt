@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -71,7 +70,7 @@ class FlashControl : AppCompatActivity() {
             val hasFlash = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE) ?: false
             if (!hasFlash){
                 flashButton.isEnabled = false
-                flashButton.setText("on flash!")
+                flashButton.text = "on flash!"
                 return
             }
 
@@ -88,7 +87,7 @@ class FlashControl : AppCompatActivity() {
 
 
             //设置brightnessTextView的值
-            var brightnessText = (defaultBrightness * 100 / maxBrightness).toString()
+            val brightnessText = (defaultBrightness * 100 / maxBrightness).toString()
             brightnessTextView.text = "$brightnessText%"
             lightnessSlide.value = defaultBrightness.toFloat()
         } catch (e: CameraAccessException) {
@@ -105,7 +104,7 @@ class FlashControl : AppCompatActivity() {
     }
 
     private fun updateUI(value:Int){
-        var brightnessText  = (value * 100/ maxBrightness).toString()
+        val brightnessText  = (value * 100/ maxBrightness).toString()
         brightnessTextView.text = "$brightnessText%"
     }
 
@@ -185,7 +184,7 @@ class FlashControl : AppCompatActivity() {
         initFlashlightManager()
 
         //检查并申请相机权限
-        if (checkCameraPermission())
+        if (checkCameraPermission()){
 
         flashButton.setOnClickListener { view: View ->
             vibrateWithPredefinedEffect(
@@ -195,6 +194,7 @@ class FlashControl : AppCompatActivity() {
 
             changeFlashlight()
         }
+            }
 
         lightnessSlide.addOnChangeListener { slider: Slider, value: Float, fromUser: Boolean ->
             if (fromUser) {
@@ -208,17 +208,16 @@ class FlashControl : AppCompatActivity() {
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {  //检查兼容新
-            val windowInsetsController =
-                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+        //检查兼容新
+        val windowInsetsController =
+            WindowCompat.getInsetsController(window, window.decorView)
 
-            // 判断是否为深色模式
-            val isDarkTheme = ((getResources().getConfiguration().uiMode and
-                    Configuration.UI_MODE_NIGHT_MASK)
-                    == Configuration.UI_MODE_NIGHT_YES)
+        // 判断是否为深色模式
+        val isDarkTheme = ((getResources().configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK)
+                == Configuration.UI_MODE_NIGHT_YES)
 
-            // 设置状态栏图标颜色
-            windowInsetsController.setAppearanceLightStatusBars(!isDarkTheme)
-        }
+        // 设置状态栏图标颜色
+        windowInsetsController.isAppearanceLightStatusBars = !isDarkTheme
     }
 }

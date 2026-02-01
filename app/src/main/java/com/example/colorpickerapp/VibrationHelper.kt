@@ -7,8 +7,6 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.util.Log
-import android.view.HapticFeedbackConstants
-import android.view.View
 
 private var TGA = "fuckVibrationHelper"
 
@@ -49,11 +47,9 @@ private fun getVibrator(context: Context): Vibrator {
         val vibrator = getVibrator(context)
 
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                //判断系统版本,android8以上使用VibrationEffect
-                val effect = VibrationEffect.createOneShot(milliseconds,amplitude)
-                vibrator.vibrate(effect)
-            }
+            //判断系统版本,android8以上使用VibrationEffect
+            val effect = VibrationEffect.createOneShot(milliseconds,amplitude)
+            vibrator.vibrate(effect)
         }catch (e: Exception) {
             Log.d(TGA,"执行震动发生错误:${e.message}")
         }
@@ -65,12 +61,8 @@ private fun getVibrator(context: Context): Vibrator {
         val vibrator = getVibrator(context)
 
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                val effect = VibrationEffect.createWaveform(pattern,repeat)
-                vibrator.vibrate(effect)
-            }else{
-                vibrator.vibrate(pattern,repeat)
-            }
+            val effect = VibrationEffect.createWaveform(pattern,repeat)
+            vibrator.vibrate(effect)
         } catch (e: Exception) {
             Log.d(TGA,"执行震动模式发生错误${e.message}")
         }

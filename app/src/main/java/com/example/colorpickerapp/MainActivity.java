@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.util.Log;
@@ -197,18 +196,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {  //检查兼容新
-            WindowInsetsControllerCompat windowInsetsController =
-                    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        //检查兼容新
+        WindowInsetsControllerCompat windowInsetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
 
-            // 判断是否为深色模式
-            boolean isDarkTheme = (getResources().getConfiguration().uiMode &
-                    android.content.res.Configuration.UI_MODE_NIGHT_MASK)
-                    == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        // 判断是否为深色模式
+        boolean isDarkTheme = (getResources().getConfiguration().uiMode &
+                android.content.res.Configuration.UI_MODE_NIGHT_MASK)
+                == android.content.res.Configuration.UI_MODE_NIGHT_YES;
 
-            // 设置状态栏图标颜色
-            windowInsetsController.setAppearanceLightStatusBars(!isDarkTheme);
-        }
+        // 设置状态栏图标颜色
+        windowInsetsController.setAppearanceLightStatusBars(!isDarkTheme);
 
         //初始化视图
         initView();
